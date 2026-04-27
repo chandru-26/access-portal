@@ -23,7 +23,7 @@ const GenerateRequest = () => {
     try {
       const [emp, cust] = await Promise.all([
         axios.get("http://localhost:5000/employees"),
-        axios.get("http://localhost:5000/customers")
+        axios.get("https://your-backend.onrender.com/customers")
       ]);
 
       setEmployees(emp.data);

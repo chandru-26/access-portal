@@ -11,7 +11,7 @@ const Customers = () => {
 
   // Fetch customers
   const fetchCustomers = async () => {
-    const res = await axios.get("http://localhost:5000/customers");
+    const res = await axios.get("https://your-backend.onrender.com/customers");
     setCustomers(res.data);
   };
 
@@ -50,12 +50,12 @@ const Customers = () => {
 
     if (editingCustomer) {
       await axios.put(
-        `http://localhost:5000/customers/${editingCustomer.id}`,
+        `https://your-backend.onrender.com/customers/${editingCustomer.id}`,
         formattedValues
       );
       message.success("Customer updated");
     } else {
-      await axios.post("http://localhost:5000/customers", formattedValues);
+      await axios.post("https://your-backend.onrender.com/customers", formattedValues);
       message.success("Customer added");
     }
 
@@ -65,7 +65,7 @@ const Customers = () => {
 
   // Delete
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/customers/${id}`);
+    await axios.delete(`https://your-backend.onrender.com/customers/${id}`);
     message.success("Deleted");
     fetchCustomers();
   };

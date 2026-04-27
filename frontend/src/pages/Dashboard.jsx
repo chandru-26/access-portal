@@ -23,9 +23,9 @@ const Dashboard = () => {
  const fetchDashboardData = async () => {
   try {
     const [custRes, empRes, reqRes] = await Promise.all([
-      axios.get("http://localhost:5000/customers"),
-      axios.get("http://localhost:5000/employees"),
-      axios.get("http://localhost:5000/requests"), // ✅ NEW
+      axios.get("https://your-backend.onrender.com/customers"),
+      axios.get("https://access-portal-zlbq.onrender.com/employees"),
+      axios.get("https://access-portal-zlbq.onrender.com/requests"), // ✅ NEW
     ]);
 
     const requests = reqRes.data;

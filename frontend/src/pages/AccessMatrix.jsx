@@ -46,7 +46,7 @@ const AccessMatrix = () => {
   const fetchData = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/access-matrix"
+        "https://access-portal-zlbq.onrender.com/access-matrix"
       );
 
       setData(res.data || []);
@@ -79,13 +79,13 @@ const AccessMatrix = () => {
 
       if (editing?.id) {
         await axios.put(
-          `http://localhost:5000/access-matrix/${editing.id}`,
+          `https://access-portal-zlbq.onrender.com/access-matrix/${editing.id}`,
           values
         );
         message.success("Updated successfully");
       } else {
         await axios.post(
-          "http://localhost:5000/access-matrix",
+          "https://access-portal-zlbq.onrender.com/access-matrix",
           values
         );
         message.success("Added successfully");
@@ -103,7 +103,7 @@ const AccessMatrix = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/access-matrix/${id}`
+        `https://access-portal-zlbq.onrender.com/access-matrix/${id}`
       );
       message.success("Deleted successfully");
       fetchData();
