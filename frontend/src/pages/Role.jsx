@@ -33,7 +33,7 @@ const Role = () => {
   // Fetch roles
   const fetchRoles = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/roles");
+      const res = await axios.get("https://access-portal-zlbq.onrender.com/roles");
       setRoles(res.data);
     } catch {
       message.error("Failed to fetch roles");
@@ -63,12 +63,12 @@ const Role = () => {
 
       if (editingRole) {
         await axios.put(
-          `http://localhost:5000/roles/${editingRole.id}`,
+          `https://access-portal-zlbq.onrender.com/roles/${editingRole.id}`,
           values
         );
         message.success("Role updated");
       } else {
-        await axios.post("http://localhost:5000/roles", values);
+        await axios.post("https://access-portal-zlbq.onrender.com/roles", values);
         message.success("Role added");
       }
 
@@ -84,7 +84,7 @@ const Role = () => {
   // Delete
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/roles/${id}`);
+      await axios.delete(`https://access-portal-zlbq.onrender.com/roles/${id}`);
       message.success("Deleted");
       fetchRoles();
     } catch {

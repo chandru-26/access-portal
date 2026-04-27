@@ -11,7 +11,7 @@ const Customers = () => {
 
   // Fetch customers
   const fetchCustomers = async () => {
-    const res = await axios.get("https://your-backend.onrender.com/customers");
+    const res = await axios.get("https://access-portal-zlbq.onrender.com/customers");
     setCustomers(res.data);
   };
 
@@ -50,12 +50,12 @@ const Customers = () => {
 
     if (editingCustomer) {
       await axios.put(
-        `https://your-backend.onrender.com/customers/${editingCustomer.id}`,
+        `https://access-portal-zlbq.onrender.com/customers/${editingCustomer.id}`,
         formattedValues
       );
       message.success("Customer updated");
     } else {
-      await axios.post("https://your-backend.onrender.com/customers", formattedValues);
+      await axios.post("https://access-portal-zlbq.onrender.com/customers", formattedValues);
       message.success("Customer added");
     }
 
@@ -65,7 +65,7 @@ const Customers = () => {
 
   // Delete
   const handleDelete = async (id) => {
-    await axios.delete(`https://your-backend.onrender.com/customers/${id}`);
+    await axios.delete(`https://access-portal-zlbq.onrender.com/customers/${id}`);
     message.success("Deleted");
     fetchCustomers();
   };

@@ -22,8 +22,8 @@ const GenerateRequest = () => {
   const fetchData = async () => {
     try {
       const [emp, cust] = await Promise.all([
-        axios.get("http://localhost:5000/employees"),
-        axios.get("https://your-backend.onrender.com/customers")
+        axios.get("https://access-portal-zlbq.onrender.com/employees"),
+        axios.get("https://access-portal-zlbq.onrender.com/customers")
       ]);
 
       setEmployees(emp.data);
@@ -36,7 +36,7 @@ const GenerateRequest = () => {
   /* ================= FETCH REQUESTS ================= */
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/requests");
+      const res = await axios.get("https://access-portal-zlbq.onrender.com/requests");
 
       // 🔥 Normalize backend data → frontend format
       const formatted = res.data.map((r) => ({
@@ -70,7 +70,7 @@ const GenerateRequest = () => {
       const values = await form.validateFields();
 
       const res = await axios.post(
-        "http://localhost:5000/generate-access",
+        "https://access-portal-zlbq.onrender.com/generate-access",
         values
       );
 
@@ -84,7 +84,7 @@ const GenerateRequest = () => {
         access: res.data.access
       };
 
-      await axios.post("http://localhost:5000/requests", payload);
+      await axios.post("https://access-portal-zlbq.onrender.com/requests", payload);
 
       await fetchRequests(); // 🔥 refresh table from DB
 

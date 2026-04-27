@@ -33,7 +33,7 @@ const Employees = () => {
   // Fetch employees
   const fetchEmployees = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/employees");
+      const res = await axios.get("https://access-portal-zlbq.onrender.com/employees");
       setEmployees(res.data);
     } catch (err) {
       message.error("Failed to fetch employees");
@@ -76,13 +76,13 @@ const Employees = () => {
 
       if (editingEmployee) {
         await axios.put(
-          `http://localhost:5000/employees/${editingEmployee.id}`,
+          `https://access-portal-zlbq.onrender.com/employees/${editingEmployee.id}`,
           payload
         );
         message.success("Employee updated");
       } else {
         await axios.post(
-          "http://localhost:5000/employees",
+          "https://access-portal-zlbq.onrender.com/employees",
           payload
         );
         message.success("Employee added");
@@ -100,7 +100,7 @@ const Employees = () => {
   // Delete employee
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/employees/${id}`);
+      await axios.delete(`https://access-portal-zlbq.onrender.com/employees/${id}`);
       message.success("Deleted successfully");
       fetchEmployees();
     } catch (err) {

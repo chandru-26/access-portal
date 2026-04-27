@@ -23,7 +23,7 @@ const Dashboard = () => {
  const fetchDashboardData = async () => {
   try {
     const [custRes, empRes, reqRes] = await Promise.all([
-      axios.get("https://your-backend.onrender.com/customers"),
+      axios.get("https://access-portal-zlbq.onrender.com/customers"),
       axios.get("https://access-portal-zlbq.onrender.com/employees"),
       axios.get("https://access-portal-zlbq.onrender.com/requests"), // ✅ NEW
     ]);

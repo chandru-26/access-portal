@@ -12,7 +12,7 @@ const RevokeRequest = () => {
     try {
       setLoading(true);
 
-      const res = await axios.get("http://localhost:5000/requests");
+      const res = await axios.get("https://access-portal-zlbq.onrender.com/requests");
 
       const formatted = res.data.map((r) => ({
         id: r.id,
@@ -40,7 +40,7 @@ const RevokeRequest = () => {
   /* ================= SINGLE REVOKE ================= */
   const handleRevoke = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/requests/revoke/${id}`);
+      await axios.put(`https://access-portal-zlbq.onrender.com/requests/revoke/${id}`);
 
       message.success("Access Revoked");
 
@@ -58,7 +58,7 @@ const RevokeRequest = () => {
 
       await Promise.all(
         selectedRowKeys.map((id) =>
-          axios.put(`http://localhost:5000/requests/revoke/${id}`)
+          axios.put(`https://access-portal-zlbq.onrender.com/requests/revoke/${id}`)
         )
       );
 
