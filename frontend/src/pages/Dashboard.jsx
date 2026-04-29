@@ -7,8 +7,11 @@ import {
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // ✅ IMPORTANT
 
 const Dashboard = () => {
+  const navigate = useNavigate(); // ✅ ADD THIS
+
   const [stats, setStats] = useState({
     customers: 0,
     employees: 0,
@@ -20,35 +23,35 @@ const Dashboard = () => {
     fetchDashboardData();
   }, []);
 
- const fetchDashboardData = async () => {
-  try {
-    const [custRes, empRes, reqRes] = await Promise.all([
-      axios.get("https://access-portal-zlbq.onrender.com/customers"),
-      axios.get("https://access-portal-zlbq.onrender.com/employees"),
-      axios.get("https://access-portal-zlbq.onrender.com/requests"), // ✅ NEW
-    ]);
+  const fetchDashboardData = async () => {
+    try {
+      const [custRes, empRes, reqRes] = await Promise.all([
+        axios.get("https://access-portal-zlbq.onrender.com/customers"),
+        axios.get("https://access-portal-zlbq.onrender.com/employees"),
+        axios.get("https://access-portal-zlbq.onrender.com/requests"),
+      ]);
 
-    const requests = reqRes.data;
+      const requests = reqRes.data;
 
-    const activeCount = requests.filter(
-      (r) => r.status !== "REVOKED"
-    ).length;
+      const activeCount = requests.filter(
+        (r) => r.status !== "REVOKED"
+      ).length;
 
-    const revokedCount = requests.filter(
-      (r) => r.status === "REVOKED"
-    ).length;
+      const revokedCount = requests.filter(
+        (r) => r.status === "REVOKED"
+      ).length;
 
-    setStats({
-      customers: custRes.data.length,
-      employees: empRes.data.length,
-      drafts: activeCount,     // ✅ FIXED
-      revoke: revokedCount,    // ✅ FIXED
-    });
+      setStats({
+        customers: custRes.data.length,
+        employees: empRes.data.length,
+        drafts: activeCount,
+        revoke: revokedCount,
+      });
 
-  } catch (err) {
-    console.error("Dashboard fetch error:", err);
-  }
-};
+    } catch (err) {
+      console.error("Dashboard fetch error:", err);
+    }
+  };
 
   const statsData = [
     {
@@ -149,18 +152,19 @@ const Dashboard = () => {
     </>
   );
 
+  /* ✅ FIXED NAVIGATION */
   function handleAction(action) {
     if (action === "Add Customer") {
-      window.location.href = "/customers";
+      navigate("/customers");
     }
     if (action === "Add Employee") {
-      window.location.href = "/employees";
+      navigate("/employees");
     }
     if (action === "New Joiner Request") {
-      window.location.href = "/requests";
+      navigate("/requests");
     }
     if (action === "Revoke Access") {
-      window.location.href = "/revoke";
+      navigate("/revoke");
     }
   }
 };
