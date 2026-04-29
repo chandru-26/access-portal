@@ -7,6 +7,7 @@ import Role from "./pages/Role";
 import AccessMatrix from "./pages/AccessMatrix";
 import GenerateRequest from "./pages/GenerateRequest";
 import RevokeRequest from "./pages/RevokeRequest";
+import RequestHistory from "./pages/RequestHistory";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/access-matrix" element={<AccessMatrix />} />
           <Route path="/requests" element={<GenerateRequest />} />
           <Route path="/revoke" element={<RevokeRequest />} />
+          <Route path="/history" element={<RequestHistory />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>
